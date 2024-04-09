@@ -109,28 +109,26 @@ begin
 		
         w_stop <= '1';  wait for k_clk_period * 2;
             assert w_floor = "0010" report "bad wait on floor2" severity failure;
---        w_stop <= '0';  wait for k_clk_period * 2;
---            assert w_floor = "0011" report "bad up from floor2" severity failure;
-        
+
         w_reset <= '1';  wait for k_clk_period * 2;
         w_reset <= '0';  wait for k_clk_period;
             assert w_floor = "0010" report "Reset did not go to floor 2" severity failure;
          
                -- Test elevator going up
-               w_up_down <= '1';  -- Direction set to up
-               w_stop <= '0';     -- Not stopped
-               wait for k_clk_period * 2;  
+               w_up_down <= '1';  
+               w_stop <= '0';     
+               wait for k_clk_period * 3;  
                assert w_floor = "0011" report "Elevator did not move up from floor 2 to floor 3" severity failure;
                
                -- Test elevator stopping
-               w_stop <= '1';  -- Stop the elevator
+               w_stop <= '1'; 
                wait for k_clk_period * 2;
-               w_stop <= '0';  -- Resume moving up
+               w_stop <= '0';  
                wait for k_clk_period * 2;
                assert w_floor = "0100" report "Elevator did not resume moving up from floor 3 to floor 4" severity failure;
            
                -- Test elevator going down
-               w_up_down <= '0';  -- Direction set to down
+               w_up_down <= '0'; 
                wait for k_clk_period * 2;
                assert w_floor = "0011" report "Elevator did not move down from floor 4 to floor 3" severity failure;
            
