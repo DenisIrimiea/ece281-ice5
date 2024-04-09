@@ -127,12 +127,15 @@ begin
           w_stop <= '0'; 
           wait for k_clk_period;
           assert w_floor = "0011" report "bad down from floor 4" severity failure;
-     
+          w_stop<= '1';
           wait for k_clk_period;
           assert w_floor = "0011" report "bad wait at floor 3" severity failure;
-       
-          wait for k_clk_period * 2;
-          assert w_floor = "0010" report "Elevator did not move down to floor 2" severity failure;
+          w_stop <= '0';
+          wait for k_clk_period;
+          assert w_floor = "0010" report "bad down from floor 2" severity failure;
+          w_stop <=  '1';
+          wait for k_clk_period;
+          assert w_floor = "0010" report "bad wait at floor 2" severity failure;
        
               wait; 
        end process;    
