@@ -117,7 +117,7 @@ begin
             assert w_floor = "0010" report "Reset did not go to floor 2" severity failure;
         w_up_down <= '1'; 
                 w_stop <= '0';     
-                wait for k_clk_period * 2;  
+                wait for k_clk_period * 4;  
                 assert w_floor = "0011" report "Elevator did not got to floor 3" severity failure;
           wait for k_clk_period * 2;  
                   assert w_floor = "0100" report "Elevator did not go to floor 4" severity failure;
