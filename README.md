@@ -1,3 +1,10 @@
+
+
+Doc Statement:
+
+I got an extension for this assignment because I was at competition and then my simulation was not running properly. 
+
+
 # ICE 5: Basic Elevator Controller
 
 VHDL for ECE 281 [ICE 5](https://usafa-ece.github.io/ece281-book/ICE/ICE5.html)

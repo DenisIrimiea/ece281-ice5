@@ -67,6 +67,7 @@ architecture test_bench of elevator_controller_fsm_tb is
 	-- test signals
 	signal w_clk, w_reset, w_stop, w_up_down : std_logic := '0';
 	signal w_floor : std_logic_vector(3 downto 0) := (others => '0');
+
   
 	-- 50 MHz clock
 	constant k_clk_period : time := 20 ns;
